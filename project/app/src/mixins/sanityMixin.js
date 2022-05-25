@@ -15,5 +15,12 @@ export default {
 
          this.loading = false;
       },
+
+      async sanityFetchMovies(query) {
+         this.result = await sanity.fetch(query);
+         this.$store.dispatch('addMovies', this.result);
+
+         this.loading = false;
+      }
    }
 }
