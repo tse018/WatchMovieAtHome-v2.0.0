@@ -2,24 +2,11 @@
    <div v-if="loading">Loading...</div>
    <div v-else>
       <section class="hero-container">
-         <article
-            class="hero-container__video-container"
-            v-for="movie in movies"
-            :key="movie.title"
-         >
+         <article class="hero-container__video-container" v-for="movie in movies" :key="movie.title">
             <h1 class="hero-container__header">
                {{ movie.title }}
             </h1>
-            <iframe
-               class="hero-container__video-player"
-               type="text/html"
-               :src="`https://www.youtube.com/embed/${movie.trailerUrl.substring(
-                  32
-               )}?playlist=${movie.trailerUrl.substring(
-                  32
-               )}&loop=1&autoplay=1&mute=1&controls=0&disablekb=1&rel=0`"
-               :title="movie.title"
-            />
+            <iframe class="hero-container__video-player" type="text/html" :src="`https://www.youtube.com/embed/${movie.trailerUrl.substring(32)}?playlist=${movie.trailerUrl.substring(32)}&loop=1&autoplay=1&mute=1&controls=0&disablekb=1&rel=0`" :title="movie.title" />
          </article>
       </section>
    </div>
