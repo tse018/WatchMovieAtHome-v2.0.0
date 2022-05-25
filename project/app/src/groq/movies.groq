@@ -1,0 +1,12 @@
+*[_type == "movie" && releaseDate < "2022-03-01"] | order(releaseDate desc) {
+   title,
+   price,
+   slug {
+      current
+   },
+   image {
+      asset-> {
+         url
+      }
+   },
+}

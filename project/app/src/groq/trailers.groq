@@ -1,0 +1,4 @@
+*[_type == 'movie' && trailerUrl != null] | order(releaseDate desc) [0...4] {
+   title,
+   trailerUrl,
+}

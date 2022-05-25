@@ -1,0 +1,16 @@
+*[slug.current == $slug] [0] {
+   title,
+   description,
+   price,
+   genre,
+   image {
+      asset-> {
+         url,
+      }
+   },
+   genres[] -> {
+      genre
+   },
+   length,
+   ageLimit
+}
