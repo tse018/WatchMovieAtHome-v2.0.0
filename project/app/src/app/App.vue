@@ -8,10 +8,20 @@
 import Header from '../components/Header.vue';
 import Footer from '../components/Footer.vue';
 
+import seoMixin from '../mixins/seoMixin.js';
+
 export default {
+   mixins: [seoMixin],
+   
    components: {
       Header,
       Footer,
+   },
+
+   created() {
+      this.metaTags({
+         title: 'Cinema At Home',
+		});
    }
 }
 </script>

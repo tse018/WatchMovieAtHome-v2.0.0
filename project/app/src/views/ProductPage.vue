@@ -47,14 +47,20 @@
 
 <script>
 import query from '../groq/movieSlugParameter.groq?raw';
+
 import sanityMixin from '../mixins/sanityMixin.js';
+import seoMixin from '../mixins/seoMixin.js';
 
 export default {
-   mixins: [sanityMixin],
+   mixins: [sanityMixin, seoMixin],
 
    async created() {
       await this.sanityFecthParamsSlug(query, {
          slug: this.$route.params.movie_slug
+      });
+
+      this.metaTags({
+         title: this.$route.params.movie_slug,
       });
    },
 
@@ -62,6 +68,14 @@ export default {
       product() {
          return this.$store.getters.getMovies;
       },
+   },
+
+   watch: {
+      $route() {
+         this.metaTags({
+            title: this.$route.params.movie_slug,
+         });
+      }
    },
 
    methods: {

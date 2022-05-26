@@ -31,11 +31,13 @@
 <script>
 import LandingSection from '../components/LandingSection.vue';
 
-import query from "../groq/movies.groq?raw";
-import sanityMixin from "../mixins/sanityMixin.js";
+import query from '../groq/movies.groq?raw';
+
+import sanityMixin from '../mixins/sanityMixin.js';
+import seoMixin from '../mixins/seoMixin.js';
 
 export default {
-   mixins: [sanityMixin],
+   mixins: [sanityMixin, seoMixin],
 
    components: {
       LandingSection,
@@ -43,6 +45,10 @@ export default {
 
    async created() {
       await this.sanityFetchMovies(query);
+
+      this.metaTags({
+         title: 'Cinema At Home',
+		});
    },
 
    computed: {

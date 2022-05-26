@@ -7,6 +7,10 @@ export default {
    },
 
    mutations: {
+      setProducts(state, cart) {
+         state.cart = cart;
+      },
+
       add(state, movie) {
          const checkIfMovieExist = state.cart.findIndex(item => { 
             return item.product.title === movie.title;
@@ -34,14 +38,6 @@ export default {
             state.cart[movie].quantity -= 1;
          }
       },
-
-      setProducts(state, cart) {
-         state.cart = cart;
-      },
-
-      emptyCart(state) {
-         state.cart = [];
-      }
    },
 
    actions: {
@@ -93,13 +89,13 @@ export default {
       },
 
       getCartItems(state) {
-         return state.cart.reduce(function(count, item) {
+         return state.cart.reduce((count, item) => {
             return count + (item.quantity)
          }, 0);
       },
 
-      getTotalItems(state) {
-         return state.cart.reduce(function(total, item) {
+      getTotalPrice(state) {
+         return state.cart.reduce((total, item) => {
             return total + (item.product.price * item.quantity)
          }, 0);
       }

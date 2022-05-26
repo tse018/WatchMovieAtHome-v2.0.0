@@ -12,11 +12,15 @@
 
 <script>
 export default {
+   mounted() {
+      this.$store.dispatch('getFromLocalStorage');
+   },
+
    computed: {
       itemCount() {
-         return this.$store.getters.getCartItems;
-      },
-   },
+         return this.$store.getters.getCartItems
+      }
+   }
 }
 </script>
 
