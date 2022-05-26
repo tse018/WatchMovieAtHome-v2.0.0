@@ -9,7 +9,7 @@ export default {
 
    mutations: {
       addMovieToCart(state, movie) {
-         let checkIfMovieExist = state.cart.findIndex(product => product.title == movie.title);
+         let checkIfMovieExist = state.cart.findIndex(product => product.title === movie.title);
 
          if(checkIfMovieExist !== -1) {
             state.cart[checkIfMovieExist].quantity += 1;
@@ -33,7 +33,7 @@ export default {
       },
 
       decreaseQuantity(state, index)  {
-         if (state.cart.[index] && state.cart[index].quantity > 0) {
+         if (state.cart[index] && state.cart[index].quantity > 0) {
             state.cart[index].quantity -= 1;
          }
       },
@@ -44,7 +44,7 @@ export default {
    },
 
    actions: {
-      addToCart({commit, dispatch},´ movie) {
+      addToCart({commit, dispatch}, movie) {
          commit('addMovieToCart', movie);
          dispatch('setToLocalStorage');
       },

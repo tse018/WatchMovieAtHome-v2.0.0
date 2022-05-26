@@ -19,7 +19,7 @@
                   </h2>
                </RouterLink>
 
-               <button class="products-container__product-button">
+               <button class="products-container__product-button" @click="add(product)">
                   Add to cart
                </button>
             </figure>
@@ -50,6 +50,12 @@ export default {
          return this.$store.getters.getMovies;
       },
    },
+
+   methods: {
+      add(movie) {
+         this.$store.dispatch("addToCart", movie)
+      }
+   }
 }
 </script>
 
