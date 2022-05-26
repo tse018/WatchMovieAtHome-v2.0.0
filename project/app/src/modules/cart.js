@@ -3,44 +3,41 @@ export default {
       return {
          cart: [],
          totalAmount: 0,
-         localStorageName: 'Cart-Storage' 
+         localStoreName: 'Cart-Storage' 
       }
    },
 
    mutations: {
       addMovieToCart(state, movie) {
-         let checkIfMovieExist = state.cart.findIndex(product => product.title === movie.title);
-
-         if(checkIfMovieExist !== -1) {
-            state.cart[checkIfMovieExist].quantity += 1;
-         } else {
-            const movieWithQuantity = {
-               ...movie,
-                  quantity: 1
-            }
-            state.cart.push(movieWithQuantity);
-         }
+         state.cart.push(movie)
       },
 
-      removeMovieFromCart(state, movie) {
-         state.cart.findIndex
+      removeMovieFromCart(state, itemInCart) {
+         state.cart.splice(itemInCart, 1)
       },
 
-      increaseQuantity(state, index) {
+      increase(state, index) {
          if(state.cart[index]) {
             state.cart[index].quantity += 1;
          }
       },
-
-      decreaseQuantity(state, index)  {
+      
+      decrease(state, index)  {
          if (state.cart[index] && state.cart[index].quantity > 0) {
             state.cart[index].quantity -= 1;
          }
+
+         if(state.cart[index] && state.cart[index].quantity === 0) {
+            state.cart[index].splice(index, 1)
+         }
+      },
+      setProducts(state, cart) {
+         state.cart = cart;
       },
 
-      setMovies(state, movies) {
-         state.cart = movies;
-      },
+      emptyCart(state) {
+         state.cart = [];
+      }
    },
 
    actions: {
@@ -54,8 +51,38 @@ export default {
          dispatch('setToLocalStorage');
       },
 
-      setToLocalStorage({state}) {
-         window.localStorage.setItem(state.localStorageName, JSON.stringify(state.cart));
+      decreaseQuantity({ commit }, index) {
+         commit('decrease', index)
       },
+
+      increaseQuantity({ commit}, index) {
+         commit('increase', index);
+      },
+
+      setToLocalStorage({state}) {
+         window.localStorage.setItem(state.localStoreName, JSON.stringify(state.cart));
+      },
+
+      getFromLocalStorage({ state, commit }) {
+         const localCartState = window.localStorage.getItem(state.localStoreName);
+         const localCartStateObject = JSON.parse(localCartState);
+
+         commit('setProducts', localCartStateObject);
+      },
+
+      removeFromLocalStorage({state}) {
+         window.localStorage.removeItem(state.localStorageName);
+      },
+
+      clearLocalStorage() {
+         window.localStorage.clear();
+      }
+   },
+
+   getters: {
+      getCart(state) {
+         return state.cart;
+      }
+      
    }
 }
