@@ -3,7 +3,7 @@ export default {
       return {
          cart: [],
          totalAmount: 0,
-         localStorageName: 'Cart' 
+         localStorageName: 'Cart-Storage' 
       }
    },
 
@@ -44,7 +44,7 @@ export default {
    },
 
    actions: {
-      addToCart({commit, dispatch}, movie) {
+      addToCart({commit, dispatch},´ movie) {
          commit('addMovieToCart', movie);
          dispatch('setToLocalStorage');
       },
