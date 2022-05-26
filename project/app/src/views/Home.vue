@@ -1,28 +1,31 @@
 <template>
-   <LandingSection />
-   <div v-if="loading">Loading...</div>
+   <main>
+      <LandingSection />
 
-   <div v-else>
-      <section class="products-container">
-         <figure class="products-container__product" v-for="product in products">
-            <RouterLink class="products-container__product-link" :to="{ name: 'productPage', params: { movie_slug: product.slug.current },}">
-               <img class="products-container__product-image" :src="product.image.asset.url" :alt="product.title" />
+      <div v-if="loading"> Loading... </div>
 
-               <figcaption class="products-container__product-title">
-                  {{ product.title }}
-               </figcaption>
+      <div v-else>
+         <section class="products-container">
+            <figure class="products-container__product" v-for="product in products">
+               <RouterLink class="products-container__product-link" :to="{ name: 'productPage', params: { movie_slug: product.slug.current },}">
+                  <img class="products-container__product-image" :src="product.image.asset.url" :alt="product.title" />
 
-               <h2 class="products-container__product-price">
-                  {{ product.price }} kr
-               </h2>
-            </RouterLink>
+                  <figcaption class="products-container__product-title">
+                     {{ product.title }}
+                  </figcaption>
 
-            <button class="products-container__product-button">
-               Add to cart
-            </button>
-         </figure>
-      </section>
-   </div>
+                  <h2 class="products-container__product-price">
+                     {{ product.price }} kr
+                  </h2>
+               </RouterLink>
+
+               <button class="products-container__product-button">
+                  Add to cart
+               </button>
+            </figure>
+         </section>
+      </div>
+   </main>
 </template>
 
 <script>
@@ -33,7 +36,7 @@ import sanityMixin from "../mixins/sanityMixin.js";
 
 export default {
    mixins: [sanityMixin],
-   
+
    components: {
       LandingSection,
    },

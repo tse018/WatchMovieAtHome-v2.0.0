@@ -1,5 +1,5 @@
 <template>
-   <div v-if="loading">Loading...</div>
+   <div v-if="loading"> Loading...</div>
    <div v-else>
       <section class="hero-container">
          <article class="hero-container__video-container" v-for="movie in movies" :key="movie.title">

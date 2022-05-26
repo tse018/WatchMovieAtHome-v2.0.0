@@ -71,10 +71,10 @@ export default {
 .product-container {
    padding-top: 10%;
    width: 100%;
-   height: 100vh;
    display: flex;
    flex-direction: row;
    flex-wrap: wrap;
+   overflow: auto;
 }
 
 .product-container__product {
@@ -90,7 +90,7 @@ export default {
 
 .product-container__product-information {
    width: max-content;
-   margin-left: 100px;
+   margin: -5% 0 0 10%;
 }
 
 .product-container__product-title {
