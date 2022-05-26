@@ -2,35 +2,39 @@ export default {
    state() {
       return {
          cart: [],
-         totalAmount: 0,
          localStoreName: 'Cart-Storage' 
       }
    },
 
    mutations: {
-      addMovieToCart(state, movie) {
-         state.cart.push(movie)
+      add(state, movie) {
+         const checkIfMovieExist = state.cart.findIndex(item => { 
+            return item.product.title === movie.title;
+         });
+         if(checkIfMovieExist >= 0) {
+            
+            state.cart[checkIfMovieExist].quantity += 1;
+         } else {
+            state.cart.push({quantity: 1, product: movie });
+         }
       },
 
-      removeMovieFromCart(state, itemInCart) {
-         state.cart.splice(itemInCart, 1)
+      remove(state, movie) {
+         state.cart.splice(movie, 1)
       },
 
-      increase(state, index) {
-         if(state.cart[index]) {
-            state.cart[index].quantity += 1;
+      increase(state, movie) {
+         if(state.cart[movie]) {
+            state.cart[movie].quantity += 1;
          }
       },
       
-      decrease(state, index)  {
-         if (state.cart[index] && state.cart[index].quantity > 0) {
-            state.cart[index].quantity -= 1;
-         }
-
-         if(state.cart[index] && state.cart[index].quantity === 0) {
-            state.cart[index].splice(index, 1)
+      decrease(state, movie)  {
+         if (state.cart[movie] && state.cart[movie].quantity > 1) {
+            state.cart[movie].quantity -= 1;
          }
       },
+
       setProducts(state, cart) {
          state.cart = cart;
       },
@@ -41,24 +45,28 @@ export default {
    },
 
    actions: {
+      /* Cart */
       addToCart({commit, dispatch}, movie) {
-         commit('addMovieToCart', movie);
+         commit('add', movie);
          dispatch('setToLocalStorage');
       },
 
-      removeFromCart({commit, dispatch }, itemInCart) {
-         commit('removeMovieFromCart', itemInCart);
+      removeFromCart({commit, dispatch }, movie) {
+         commit('remove', movie);
          dispatch('setToLocalStorage');
       },
 
-      decreaseQuantity({ commit }, index) {
-         commit('decrease', index)
+      decreaseQuantity({ commit, dispatch }, index) {
+         commit('decrease', index);
+         dispatch('setToLocalStorage');
       },
 
-      increaseQuantity({ commit}, index) {
+      increaseQuantity({ commit, dispatch }, index) {
          commit('increase', index);
+         dispatch('setToLocalStorage');
       },
 
+      /* Local Storage */
       setToLocalStorage({state}) {
          window.localStorage.setItem(state.localStoreName, JSON.stringify(state.cart));
       },
@@ -82,6 +90,18 @@ export default {
    getters: {
       getCart(state) {
          return state.cart;
+      },
+
+      getCartItems(state) {
+         return state.cart.reduce(function(count, item) {
+            return count + (item.quantity)
+         }, 0);
+      },
+
+      getTotalItems(state) {
+         return state.cart.reduce(function(total, item) {
+            return total + (item.product.price * item.quantity)
+         }, 0);
       }
       
    }

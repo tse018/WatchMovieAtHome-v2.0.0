@@ -14,7 +14,7 @@
 export default {
    computed: {
       itemCount() {
-         return this.$store.getters.getItemcInCart;
+         return this.$store.getters.getCartItems;
       },
    },
 }

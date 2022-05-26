@@ -1,29 +1,32 @@
 <template>
    <section class="cart">
-      <h1 class="cart__title">
-         Cart
-      </h1>
+      <template v-if="cart.length === 0"> 
+         Your cart is empty 
+      </template>
 
-      <div class="cart__cart-container" v-for="(item, index) in cart">
-         <img class="cart__cart-image" :src="item.image.asset.url" :alt="item.title" />
+      <template v-else>
+         {{ totalSum }} and {{ cartCount }}
+         <div class="cart__cart-container" v-for="(movie, index) in cart">
+         <img class="cart__cart-image" :src="movie.product.image.asset.url" :alt="movie.product.title" />
+         <span> {{ movie.quantity }} </span>
 
-         <button class="cart__cart-decrease" @click="decrease(item, index)">
+         <button class="cart__cart-decrease" @click="decrease(index, movie)">
             -
          </button>
 
-         <button class="cart__cart-increase" @click="increase(index)">
+         <button class="cart__cart-increase" @click="increase(index, movie)">
             +
          </button>
 
-         <button @click="removeFromCart(movie)">
+         <button @click="remove(movie)">
             Remove
          </button>
-      </div>
+         </div>
+      </template>
    </section>
 </template>
 
 <script>
-
 export default {
    mounted() {
       this.$store.dispatch('getFromLocalStorage');
@@ -34,6 +37,14 @@ export default {
       cart() {
          return this.$store.getters.getCart;
       },
+
+      cartCount() {
+         return this.$store.getters.getCartItems;
+      },
+
+      totalSum() {
+         return this.$store.getters.getTotalItems;
+      }
    },
 
    methods: {
@@ -41,17 +52,16 @@ export default {
          this.$store.dispatch('decreaseQuantity', movie, index);
       },
 
-      increase(index) {
-         this.$store.dispatch('increaseQuantity', index);
+      increase(movie, index) {
+         this.$store.dispatch('increaseQuantity', movie, index);
       },
 
-      removeFromCart(movie) {
+      remove(movie) {
          this.$store.dispatch('removeFromCart', movie);
       },
 
       emptyCart() {
          this.$store.dispatch('removeFromLocalStorage');
-
       }
    },
 }

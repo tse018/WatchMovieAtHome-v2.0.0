@@ -37,7 +37,7 @@
                {{ product.price }}.-
             </p>
 
-            <button class="product-container__product-button">
+            <button class="product-container__product-button" @click="add(product)">
                Add {{ product.title }} to cart
             </button>
          </section>
@@ -61,9 +61,14 @@ export default {
    computed: {
       product() {
          return this.$store.getters.getMovies;
+      },
+   },
+
+   methods: {
+      add(movie) {
+         this.$store.dispatch("addToCart", movie)
       }
    }
-
 }
 </script>
 
