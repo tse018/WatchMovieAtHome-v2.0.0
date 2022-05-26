@@ -45,6 +45,7 @@ export default {
       display: grid;
       gap: 20px;
       grid-template-columns: repeat(12, 1fr);
+      overflow: hidden;
    }
 
    .hero-container__video-container {
@@ -56,7 +57,7 @@ export default {
 
    .hero-container__video-container:nth-child(2) {
       grid-column: span 6;
-      width: 100%;
+      width: 50vw;
       height: 100vh;
       padding: 20px;
    }
