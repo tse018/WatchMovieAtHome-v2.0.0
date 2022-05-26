@@ -21,6 +21,13 @@ export default {
          this.$store.dispatch('addMovies', this.result);
 
          this.loading = false;
-      }
+      },
+
+      async sanityFecthParamsSlug(query, params) {
+         this.result = await sanity.fetch(query, params);
+         this.$store.dispatch('addMovies', this.result);
+
+         this.loading = false;
+      },
    }
 }
