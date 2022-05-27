@@ -5,7 +5,7 @@ export default {
          localStoreName: 'Cart-Storage' 
       }
    },
-
+   
    mutations: {
       add(state, movie) {
          const checkIfMovieExist = state.cart.findIndex(item => { 
@@ -38,10 +38,13 @@ export default {
       setProducts(state, cart) {
          state.cart = cart;
       },
+<<<<<<< HEAD
 
       emptyCart(state) {
          state.cart = [];
       }
+=======
+>>>>>>> 934229189d2ffbbb6c1768a9a941da9f3a5ced99
    },
 
    actions: {
