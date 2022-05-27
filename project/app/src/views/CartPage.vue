@@ -8,22 +8,25 @@
 
       <template v-else>
          <div class="cart__cart-container" v-for="(movie, index) in cart">
-         <img class="cart__cart-image" :src="movie.product.image.asset.url" :alt="movie.product.title" />
+            <img class="cart__cart-image" :src="movie.product.image.asset.url" :alt="movie.product.title" />
 
-         <button class="cart__cart-decrease" @click="decrease(index, movie)">
-            -
-         </button>
+            <button class="cart__cart-decrease" @click="decrease(index, movie)" aria-label="decrease product quantity">
+               -
+            </button>
 
-         <span class="cart__cart-quantity"> {{ movie.quantity }} </span>
+            <span class="cart__cart-quantity"> 
+               {{ movie.quantity }}
+            </span>
 
-         <button class="cart__cart-increase" @click="increase(index, movie)">
-            +
-         </button>
+            <button class="cart__cart-increase" @click="increase(index, movie)" aria-label="increase product quantity">
+               +
+            </button>
 
-         <button class="cart__cart-remove" @click="remove(movie)">
-            Remove
-         </button>
+            <button class="cart__cart-remove" @click="remove(movie)">
+               Remove
+            </button>
          </div>
+
          <div>
             {{ totalSum }} and {{ cartCount }}
          </div>

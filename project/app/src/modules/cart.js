@@ -5,12 +5,8 @@ export default {
          localStoreName: 'Cart-Storage' 
       }
    },
-
+   
    mutations: {
-      setProducts(state, cart) {
-         state.cart = cart;
-      },
-
       add(state, movie) {
          const checkIfMovieExist = state.cart.findIndex(item => { 
             return item.product.title === movie.title;
@@ -37,6 +33,10 @@ export default {
          if (state.cart[movie] && state.cart[movie].quantity > 1) {
             state.cart[movie].quantity -= 1;
          }
+      },
+
+      setProducts(state, cart) {
+         state.cart = cart;
       },
    },
 
