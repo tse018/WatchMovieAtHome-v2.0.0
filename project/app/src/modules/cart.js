@@ -72,14 +72,16 @@ export default {
       },
 
       getFromLocalStorage({ state, commit }) {
-         const localCartState = window.localStorage.getItem(state.localStoreName);
-         const localCartStateObject = JSON.parse(localCartState);
+         if(localStorage.getItem(state.localStoreName) && localStorage.getItem(state.localStoreName).length > 0) {
+            const localCartState = window.localStorage.getItem(state.localStoreName);
+            const localCartStateObject = JSON.parse(localCartState);
 
-         commit('setProducts', localCartStateObject);
+            commit('setProducts', localCartStateObject);
+         }
       },
 
       removeFromLocalStorage({state}) {
-         window.localStorage.removeItem(state.localStorageName);
+         window.localStorage.removeItem(state.localStoreName);
       },
 
       clearLocalStorage() {
