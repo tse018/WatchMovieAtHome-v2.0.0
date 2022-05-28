@@ -60,7 +60,7 @@ export default {
       },
 
       totalSum() {
-         return this.$store.getters.getTotalPrice;
+         return this.$store.getters.getTotalItems;
       }
    },
 

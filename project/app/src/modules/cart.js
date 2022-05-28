@@ -2,7 +2,7 @@ export default {
    state() {
       return {
          cart: [],
-         localStoreName: 'Cart-Storage' 
+         localStoreName: 'Movie-store' 
       }
    },
    
@@ -95,13 +95,13 @@ export default {
       },
 
       getCartItems(state) {
-         return state.cart.reduce(function(count, item) {
+         return state.cart.reduce((count, item) => {
             return count + (item.quantity)
          }, 0);
       },
 
       getTotalItems(state) {
-         return state.cart.reduce(function(total, item) {
+         return state.cart.reduce((total, item) => {
             return total + (item.product.price * item.quantity)
          }, 0);
       }
