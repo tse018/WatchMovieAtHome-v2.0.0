@@ -23,15 +23,15 @@ export default {
          state.cart.splice(movie, 1)
       },
 
-      increase(state, movie) {
-         if(state.cart[movie]) {
-            state.cart[movie].quantity += 1;
+      increase(state, index) {
+         if(state.cart[index]) {
+            state.cart[index].quantity += 1;
          }
       },
       
-      decrease(state, movie)  {
-         if (state.cart[movie] && state.cart[movie].quantity > 1) {
-            state.cart[movie].quantity -= 1;
+      decrease(state, index)  {
+         if (state.cart[index] && state.cart[index].quantity > 1) {
+            state.cart[index].quantity -= 1;
          }
       },
 
