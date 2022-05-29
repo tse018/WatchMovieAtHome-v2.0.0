@@ -1,7 +1,7 @@
 <template>
    <footer class="footer-container">
       <p class="footer-container__content">
-         Built in Vue JS, Vuex, Vue Router, Sanity, 
+         Built in Vue JS, Vuex, Vue Router, Sanity
       </p>
    </footer>
 </template>
@@ -11,7 +11,7 @@
    position: fixed;
    bottom: 0;
    width: 100%;
-   height: 60px;   /* Height of the footer */
+   height: 60px;
    background-color: aliceblue;
    z-index: 100;
 }

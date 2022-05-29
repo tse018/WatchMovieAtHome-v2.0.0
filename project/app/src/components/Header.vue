@@ -1,12 +1,16 @@
 <template>
    <header class="header-container">
-      <RouterLink class="header-container__home-button" :to="{ name: 'home'}">
-         Cinema At Home
-      </RouterLink>
+      <nav class="header-container__navigation">
+         <RouterLink class="header-container__home-button" :to="{ name: 'home'}">
+            Cinema At Home
+         </RouterLink>
 
-      <RouterLink class="header-container__cart-button" :to="{ name: 'cart' }">
-         Cart: {{ itemCount }}
-      </RouterLink>
+         <RouterLink class="header-container__cart-button" :to="{ name: 'cart' }">
+            <span class="header-container__count">
+               Cart: {{ itemCount }}
+            </span>
+         </RouterLink>
+      </nav>
    </header>
 </template>
 
@@ -26,23 +30,32 @@ export default {
 
 <style>
 .header-container {
-   position: sticky;
    width: 100%;
-   height: 50px;
-   margin-bottom: 20px;
-   background-color: white;
+   height: 80px;
    z-index: 100;
+}
+
+.header-container__navigation {
    display: flex;
+   width: 100%;
    flex-direction: row;
+   padding: 20px;
    justify-content: space-between;
 }
 
 .header-container__home-button {
-   padding: 20px;
+   font-size: 30px;
+   padding: 0 20px;
+   text-decoration: none;
+   color: black;
 }
 
 .header-container__cart-button {
-   padding: 20px;
-}
+   padding: 0 20px;
+   text-decoration: none;
+   color: black;
+   font-size: 24px;
+   font-style: italic;
 
+}
 </style>

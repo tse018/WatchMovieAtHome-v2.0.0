@@ -108,7 +108,6 @@ export default {
    }
 }
 
-
 @media screen and (min-width: 601px) and (max-width: 1200px) {
    .products-container {
       display: grid;
@@ -150,7 +149,6 @@ export default {
       color: black;
    }
 }
-
 
 @media screen and (min-width: 1201px) {
    .products-container {

@@ -81,7 +81,7 @@ export default {
       },
 
       removeFromLocalStorage({state}) {
-         window.localStorage.removeItem(state.localStoreName);
+         window.localStorage.remove(state.localStoreName);
       },
 
       clearLocalStorage() {

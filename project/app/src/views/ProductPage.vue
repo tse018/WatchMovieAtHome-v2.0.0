@@ -13,10 +13,6 @@
 
             <ul class="product-container__product-details">
                <li class="product-container__product-element">
-                  {{ product.rating }}
-               </li>
-
-               <li class="product-container__product-element">
                   {{ product.length }}
                </li>
 
@@ -94,6 +90,7 @@ export default {
       flex-wrap: wrap;
       width: 100vw;
       min-height: 100vh;
+      padding-top: 50px;
    }
 
    .product-container__product {

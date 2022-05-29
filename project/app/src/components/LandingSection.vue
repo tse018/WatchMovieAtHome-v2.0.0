@@ -38,6 +38,7 @@ export default {
       flex-direction: column;
       flex-wrap: wrap;
       overflow: hidden;
+      padding-top: 50px;
    }
 
    .hero-container__video-container {
