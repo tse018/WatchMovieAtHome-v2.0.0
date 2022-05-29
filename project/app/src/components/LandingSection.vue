@@ -37,6 +37,18 @@ export default {
       display: flex;
       flex-direction: column;
       flex-wrap: wrap;
+      overflow: hidden;
+   }
+
+   .hero-container__video-container {
+      height: 50vh;
+      width: 100vw;
+      padding: 20px;
+   }
+
+   .hero-container__video-player {
+      width: 100%;
+      height: 100%;
    }
 }
 
