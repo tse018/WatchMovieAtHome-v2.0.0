@@ -73,6 +73,7 @@ export default {
       gap: 20px;
       min-height: 100%;
       margin-top: 30px;
+      padding-bottom: 50px;
    }
 
    .products-container__product {
@@ -115,6 +116,7 @@ export default {
       gap: 20px;
       min-height: 100%;
       margin-top: 30px;
+      padding-bottom: 50px;
    }
 
    .products-container__product {
@@ -157,6 +159,7 @@ export default {
       gap: 20px;
       min-height: 100%;
       margin-top: 30px;
+      padding-bottom: 50px;
    }
 
    .products-container__product {

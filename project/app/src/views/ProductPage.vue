@@ -1,13 +1,9 @@
 <template>
    <div v-if="loading">Loading...</div>
    <section v-else>
-      <article class="product-container">
+      <div class="product-container">
          <figure class="product-container__product">
-            <img
-               class="product-container__product-image"
-               :src="product.image.asset.url"
-               :alt="product.title"
-            />
+            <img class="product-container__product-image" :src="product.image.asset.url" :alt="product.title" />
          </figure>
 
          <section class="product-container__product-information">
@@ -28,11 +24,7 @@
                   PG-{{ product.ageLimit }}
                </li>
 
-               <li
-                  class="product-container__product--genre"
-                  v-for="(category, index) in product.genres"
-                  :key="category.index"
-               >
+               <li class="product-container__product--genres" v-for="(category, index) in product.genres" key="category.index">
                   {{ category.genre }}
                </li>
             </ul>
@@ -45,14 +37,11 @@
                {{ product.price }}.-
             </p>
 
-            <button
-               class="product-container__product-button"
-               @click="add(product)"
-            >
+            <button class="product-container__product-button" @click="add(product)">
                Add {{ product.title }} to cart
             </button>
          </section>
-      </article>
+      </div>
    </section>
 </template>
 
@@ -142,7 +131,7 @@ export default {
       margin: 20px;
    }
 
-   .product-container__product--genre {
+   .product-container__product--genres {
       margin: 0 5px;
       padding: 0 5px;
       border-left: 2px solid red;
@@ -228,7 +217,7 @@ export default {
       margin: 20px;
    }
 
-   .product-container__product--genre {
+   .product-container__product--genres {
       margin: 0 5px;
       padding: 0 5px;
       border-left: 2px solid red;
