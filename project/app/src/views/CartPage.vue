@@ -1,7 +1,9 @@
 <template>
    <section class="cart">
       <template v-if="cart.length <= 0">
-         <h1 class="cart__counter">Your cart is empty</h1>
+         <h1 class="cart__counter">
+            Your cart is empty
+         </h1>
       </template>
 
       <template v-else>
@@ -22,18 +24,10 @@
          </div>
 
          <div class="cart__container" v-for="(movie, index) in cart">
-            <img
-               class="cart__image"
-               :src="movie.product.image.asset.url"
-               :alt="movie.product.title"
-            />
+            <img class="cart__image" :src="movie.product.image.asset.url" :alt="movie.product.title" />
 
             <div class="cart__buttons-container">
-               <button
-                  class="cart__increase-button"
-                  @click="increase(index, movie)"
-                  aria-label="increase product quantity"
-               >
+               <button class="cart__increase-button" @click="increase(index, movie)" aria-label="increase product quantity">
                   +
                </button>
 
@@ -41,11 +35,7 @@
                   {{ movie.quantity }}
                </span>
 
-               <button
-                  class="cart__decrease-button"
-                  @click="decrease(index, movie)"
-                  aria-label="decrease product quantity"
-               >
+               <button class="cart__decrease-button" @click="decrease(index, movie)" aria-label="decrease product quantity">
                   -
                </button>
 
