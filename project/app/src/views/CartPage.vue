@@ -105,6 +105,7 @@ export default {
    justify-content: center;
    width: 95vw;
    min-height: 50vh;
+   padding-bottom: 50px;
 }
 
 .cart__counter {
