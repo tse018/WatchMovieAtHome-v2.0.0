@@ -1,4 +1,4 @@
-Movie E-Commerce Website 
+Movie E-Commerce Website v2.0.0
 
 This is school project creating e-commerce web store using Vue.JS, Vuex, Local Storagge, Vue Router & Sanity. 
 
