@@ -1,6 +1,6 @@
 Movie E-Commerce Website v2.0.0
 
-This is school project creating e-commerce web store using Vue.JS, Vuex, Local Storagge, Vue Router & Sanity. 
+This is school project creating e-commerce web store using Vue.JS, Vuex, Local Storage, Vue Router & Sanity. 
 
 Functionality for Cart using Vuex:
 - Add products to the cart
