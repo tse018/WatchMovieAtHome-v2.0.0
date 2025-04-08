@@ -20,3 +20,5 @@ Sanity
 - Building CMS database structure for this movie shop
 - All the products and content is been rendered from Sanity.oi 
 - Fetching Sanity data to Vuex and by dividing into Modules
+
+Website: https://watchcinemaathome.netlify.app/product/eternals
